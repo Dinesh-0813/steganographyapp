@@ -11,3 +11,4 @@ gunicorn==21.2.0
 numpy==1.26.4
 flask-wtf
 wtforms
+email-validator
