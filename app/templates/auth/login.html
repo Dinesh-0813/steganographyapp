@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-box animate__animated animate__fadeIn">
+        <h2 class="text-center mb-4">Login</h2>
+        <p class="text-center text-muted mb-4">Sign in to continue</p>
+        
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group mb-3">
+                {{ form.email(class="form-control input-animate", placeholder="Email") }}
+            </div>
+            
+            <div class="form-group mb-3">
+                {{ form.password(class="form-control input-animate", placeholder="Password") }}
+            </div>
+
+            <div class="text-end mb-3">
+                <a href="{{ url_for('auth.forgot_password') }}" class="text-dark forgot-link">Forgot Password?</a>
+            </div>
+            
+            <div class="d-grid">
+                {{ form.submit(class="btn btn-dark btn-block btn-animate") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 76px);
+    background-color: #f8f9fa;
+}
+
+.login-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 360px;
+    transition: transform 0.3s ease;
+}
+
+.login-box:hover {
+    transform: translateY(-5px);
+}
+
+.form-control {
+    padding: 0.8rem 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-animate:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-animate {
+    padding: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-animate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.forgot-link {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: #000 !important;
+    text-decoration: underline;
+}
+
+h2 {
+    color: #212529;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate__fadeIn {
+    animation: fadeIn 0.6s ease-out;
+}
+</style>
+{% endblock %}

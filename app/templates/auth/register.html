@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-box">
+        <h2 class="text-center mb-4">Create new Account</h2>
+        <p class="text-center text-muted mb-4">Already registered?<a href="{{ url_for('auth.login') }}" class="login-link"> Login</a></p>
+        
+        <form method="POST" action="{{ url_for('auth.register') }}">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group mb-3">
+                {{ form.name(class="form-control", placeholder="Name") }}
+            </div>
+            
+            <div class="form-group mb-3">
+                {{ form.email(class="form-control", placeholder="Email") }}
+            </div>
+            
+            <div class="form-group mb-3">
+                {{ form.password(class="form-control", placeholder="Password") }}
+            </div>
+            
+            <div class="form-group mb-3">
+                {{ form.date_of_birth(class="form-control", type="date") }}
+            </div>
+            
+            <div class="d-grid">
+                {{ form.submit(class="btn btn-dark btn-block") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 76px);
+    background-color: #ffffff;  /* Changed to white */
+}
+
+.register-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 360px;
+    transition: all 0.3s ease;
+}
+
+.login-link {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.login-link:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #000000;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.login-link:hover:after {
+    transform: scaleX(1);
+}
+
+.login-link:hover {
+    color: #000000;
+}
+
+.form-control {
+    padding: 0.8rem 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.form-control:focus {
+    border-color: #000;
+    box-shadow: none;
+}
+
+.btn-dark {
+    padding: 0.8rem;
+    font-weight: 500;
+}
+
+h2 {
+    color: #212529;
+    font-weight: 600;
+}
+</style>
+{% endblock %}

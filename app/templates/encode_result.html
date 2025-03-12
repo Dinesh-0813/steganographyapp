@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="result-container">
+    <h2>Message Encoded Successfully</h2>
+    
+    <div class="success-message">
+        Your message has been successfully encoded into the image.
+    </div>
+
+    <div class="button-group">
+        <a href="{{ url_for('main.download', filename=filename) }}" class="btn btn-primary">
+            <i class="fas fa-download"></i> DOWNLOAD ENCODED IMAGE
+        </a>
+        <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">
+            <i class="fas fa-home"></i> BACK TO DASHBOARD
+        </a>
+    </div>
+</div>
+{% endblock %}

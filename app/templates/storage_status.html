@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Cloud Storage Status</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Connection Status</h5>
+            <p class="card-text">
+                <strong>Status:</strong> 
+                {% if status.status == 'connected' %}
+                    <span class="text-success">Connected</span>
+                {% else %}
+                    <span class="text-danger">Error</span>
+                {% endif %}
+            </p>
+            <p class="card-text"><strong>Bucket Name:</strong> {{ status.bucket_name }}</p>
+            
+            {% if status.bucket_exists %}
+                <p class="card-text text-success">Bucket is available and accessible</p>
+            {% else %}
+                <p class="card-text text-danger">
+                    Bucket not found
+                    {% if status.error %}
+                    <br>Error: {{ status.error }}
+                    {% endif %}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
